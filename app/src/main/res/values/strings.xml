@@ -1,0 +1,41 @@
+<!--
+  ~ Copyright (C) 2017 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+    <string name="app_name">Give</string>
+    <string name="retry">Retry</string>
+    <string name="search_hint">Area name</string>
+    <string name="default_area">Search by Area name</string>
+    <string name="db_plus_network">db + network</string>
+    <string name="title_activity_maps">Map</string>
+
+    <string name="daily_report">CHARITIES</string>
+    <string name="daily_news">DAILY NEWS</string>
+    <string name="cases">Total</string>
+    <string name="recovered">Recovered</string>
+    <string name="world_map_url">https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/COVID-19_Outbreak_World_Map_per_Capita.svg/320px-COVID-19_Outbreak_World_Map_per_Capita.svg.png</string>
+    <!-- Shrine backdrop menu labels -->
+    <string name="animal">Animal</string>
+    <string name="intPeace">International Peace</string>
+    <string name="homelessness">Homelessness</string>
+    <string name="medicalResearch">Medical Research</string>
+    <string name="wildlife">Wildlife Conservation</string>
+
+
+    <string name="shr_account_label">My Account</string>
+    <string name="shr_logo_content_description">Shrine Logo</string>
+
+</resources>

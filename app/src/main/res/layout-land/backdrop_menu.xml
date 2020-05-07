@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:id="@+id/root1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Corona.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/animal" />
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Corona.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/intPeace" />
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Corona.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/homelessness" />
+
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Corona.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/medicalResearch" />
+
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Corona.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/medicalResearch" />
+
+
+    </LinearLayout>
+
+</merge>
