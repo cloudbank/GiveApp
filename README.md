@@ -1,42 +1,16 @@
-# Corona Virus Tracker v3
+# Give v1
 
-  <img src="https://i.imgur.com/mVggUAU.png" height="350"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://i.imgur.com/eMiiEZ4.png" height="350"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://i.imgur.com/3oSLPat.png" height="350"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://i.imgur.com/VVnye2F.png" height="350"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://i.imgur.com/T0FnRvZ.png" height="200"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://i.imgur.com/eHMt2bf.png" height="200"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-###   -- up to date statistics that keep up with rapidly changing covid-19 data
-
-### Version 3.2 changelog:
-* Add Navigation Component for backdrop implementation
-* Placeholder for News Fragment (TBD)
-* Upgrade Glide and Material, use Material theme
-* API call change from page relocation
-
-### Version 3 changelog:
-* upgrade retrofit and add Kotlin coroutines support
-* change UI and palette
-* add coroutine support for Room
-* scope coroutines to ViewModel lifecycle with a Job
-* add Material backdrop w menu
-* basic handle landscape xml
+  <img src="https://i.imgur.com/ZLvIgPs.png" height="350"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://i.imgur.com/xFMatmK.png" height="350"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://i.imgur.com/X05HI4M.png" height="350"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
-### Version 2 changelog:
-* fixed data scrape for change in page
-* flatten UI
-* inject BoundayCallback into repository
-* check network to prevent unnecessary wake up for radio
-* add network status icon
-
+###   --A Charity API app for helping reach those in need
 
 Androidx, ICS(15) to Android10, latest best practices @ google
 
-`MVVM` pattern with `Paging`, `LiveData` and `Room`, and `Repository` pattern are used to page in scraped
-data for the UI and also back-fill from the network as the user reaches the end of the list or
-LiveData detects a change.  Covid data is as up to date as possible, but may change suddenly.
+`MVVM` pattern with `Paging`, `LiveData` and `Room`, and `Repository` pattern are used to page in data
+for the UI and also back-fill from the network as the user reaches the end of the list or LiveData detects a change.
 Swipe to refresh is available on the toolbar to get the very latest.
 
 `Room` uses a `DataSource.Factory` as a positional data source and the Paging Boundary Callback
