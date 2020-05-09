@@ -17,14 +17,11 @@
 package com.droidteahouse.give.ui
 
 
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.map
-import androidx.lifecycle.switchMap
+import androidx.lifecycle.*
 import com.droidteahouse.give.repository.GiveRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 
 
 class CharityViewModel(
@@ -32,9 +29,9 @@ class CharityViewModel(
         private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    val viewModelJob = SupervisorJob()
-    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
-    private val ioScope = CoroutineScope(Dispatchers.IO + viewModelJob)
+
+    private val uiContext = viewModelScope.coroutineContext + Dispatchers.Main
+    private val uiScope = CoroutineScope(uiContext)
 
 
     companion object {
@@ -49,14 +46,12 @@ class CharityViewModel(
         }
     }
 
-    private val repoResult = savedStateHandle.getLiveData<Int>(CATEGORY_KEY).map {
-        repository.charities(30, ioScope, uiScope, it)
+    private val repoResult = savedStateHandle.getLiveData<Int>(CATEGORY_KEY).switchMap {
+        liveData(context = viewModelScope.coroutineContext + Dispatchers.IO) {
+            emit(repository.charities(30, uiContext, uiScope, it))
+        }
     }
 
-    //livedata vs databinding
-    //a livedata that observes the value of the button in the menu
-    //mapping that to a repo call
-    //this vm
     val resultList = repoResult.switchMap { it.pagedList }
     val networkState = repoResult.switchMap { it.networkState }
     val refreshState = repoResult.switchMap { it.refreshState }
@@ -71,17 +66,14 @@ class CharityViewModel(
     }
 
     fun refresh() {
-        repoResult.value?.refresh?.invoke()
+        viewModelScope.launch {
+            repoResult.value?.refresh?.invoke()
+        }
     }
 
     fun retry() {
         repoResult.value?.retry?.invoke()
     }
 
-    override fun onCleared() {
-        viewModelJob.cancel()
-        super.onCleared()
-
-    }
 }
 

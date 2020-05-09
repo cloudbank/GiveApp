@@ -26,13 +26,13 @@
 
     <ImageView
         android:id="@+id/thumbnail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-
         android:scaleType="fitCenter"
+        android:background="@drawable/image_bg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,7 +44,6 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="128dp"
         android:scaleType="fitCenter"
-
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

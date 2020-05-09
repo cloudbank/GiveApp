@@ -25,8 +25,7 @@ import com.droidteahouse.give.vo.Charity
 @Dao
 interface GiveDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(data: List<Charity>)
-
+    suspend fun insert(data: List<Charity>)
 
     @Transaction
     @Update
@@ -36,6 +35,7 @@ interface GiveDao {
     @Query("SELECT * FROM charities WHERE causeID = :category ORDER BY indexInResponse ASC")
     fun charities(category: Int): DataSource.Factory<Int, Charity>
 
+    //called from KSuspendingFunction
     @Query("SELECT MAX(indexInResponse) + 1 FROM charities WHERE causeID = :category")
     fun getNextIndexInCategory(category: Int): Int
 

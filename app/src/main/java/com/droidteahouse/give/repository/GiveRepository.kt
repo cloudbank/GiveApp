@@ -18,10 +18,11 @@ package com.droidteahouse.give.repository
 
 import com.droidteahouse.give.vo.Charity
 import kotlinx.coroutines.CoroutineScope
+import kotlin.coroutines.CoroutineContext
 
 
 interface GiveRepository {
-    fun charities(pageSize: Int, ioScope: CoroutineScope, mainScope: CoroutineScope, categoryId: Int): Listing<Charity>
+    suspend fun charities(pageSize: Int, ctx: CoroutineContext, uiScope: CoroutineScope, categoryId: Int): Listing<Charity>
 
 
 }

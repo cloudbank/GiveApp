@@ -1,17 +1,18 @@
 # Give v1
 
-  <img src="https://i.imgur.com/ZLvIgPs.png" height="350"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://i.imgur.com/xFMatmK.png" height="350"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://i.imgur.com/X05HI4M.png" height="350"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://i.imgur.com/zCABetL.png" height="350"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://i.imgur.com/mjOD88u.png" height="350"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://i.imgur.com/x0o2a8E.png" height="350"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
 ###   --A Charity API app for helping reach those in need
 
-Androidx, ICS(15) to Android10, latest best practices @ google
+Androidx, ICS(14) to Android10, latest best practices @ google
 
-`MVVM` pattern with `Paging`, `LiveData` and `Room`, and `Repository` pattern are used to page in data
+`MVVM` pattern with `Paging`, `LiveData` and `Room`, and `Repository` pattern with Coroutines are used to page in data
 for the UI and also back-fill from the network as the user reaches the end of the list or LiveData detects a change.
 Swipe to refresh is available on the toolbar to get the very latest.
+A separate `Flow` branch will be added for integrating it.
 
 `Room` uses a `DataSource.Factory` as a positional data source and the Paging Boundary Callback
 API to get notified when the Paging library consumes the available local data.  NetworkState implementation
@@ -25,6 +26,7 @@ Glide caches images as long as they are initially loaded.
 ### Libraries
 * [Androidx][]
 * [Android Architecture Components][arch]
+* [Coroutines][]
 * [Retrofit][retrofit] for REST api communication
 * [Glide][glide] for image loading
 * [espresso][espresso] for UI tests
@@ -32,7 +34,6 @@ Glide caches images as long as they are initially loaded.
 * [Retrofit Mock][retrofit-mock] for creating a fake API implementation for tests
 
 [mockwebserver]: https://github.com/square/okhttp/tree/master/mockwebserver
-[support-lib]: https://developer.android.com/topic/libraries/support-library/index.html
 [arch]: https://developer.android.com/arch
 [espresso]: https://google.github.io/android-testing-support-library/docs/espresso/
 [retrofit]: http://square.github.io/retrofit

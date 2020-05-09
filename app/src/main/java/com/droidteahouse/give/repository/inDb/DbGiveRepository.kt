@@ -23,6 +23,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.switchMap
 import androidx.paging.toLiveData
+import androidx.room.withTransaction
 import com.droidteahouse.give.api.GiveApi
 import com.droidteahouse.give.db.GiveDb
 import com.droidteahouse.give.repository.GiveRepository
@@ -33,6 +34,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
 /**
  * Repository implementation that uses a database PagedList + a boundary callback to return a
@@ -69,9 +71,9 @@ class DbGiveRepository(
     /**
      * Inserts the response into the database while also assigning position indices to items.
      */
-    private fun insertResultIntoDb(body: List<Charity>?) {
+    private suspend fun insertResultIntoDb(body: List<Charity>?) {
         body?.let { it ->
-            db.runInTransaction {
+            db.withTransaction {
 
                 val start = db.dao().getNextIndexInCategory(boundaryCallback.cause)
                 val items = it.mapIndexed { index, child ->
@@ -122,28 +124,21 @@ class DbGiveRepository(
      *
      */
     @MainThread
-    override fun charities(pageSize: Int, ioScope: CoroutineScope, mainScope: CoroutineScope, categoryId: Int): Listing<Charity> {
+    override suspend fun charities(pageSize: Int, ctx: CoroutineContext, scope: CoroutineScope, categoryId: Int): Listing<Charity> {
         // create a boundary callback which will observe when the user reaches to the edges of
         // the list and update the database with extra data.
         // we are using a mutable live data to trigger refresh requests which eventually calls
         // refresh method and gets a new live data. Each refresh request by the user becomes a newly
         // dispatched data in refreshTrigger
         boundaryCallback.cause = categoryId
+        boundaryCallback.scope = scope
         val refreshTrigger = MutableLiveData<Unit>()
         val refreshState = refreshTrigger.switchMap {
-            refresh(mainScope, categoryId)
+            refresh(scope, categoryId)
         }
 
-        // We use toLiveData Kotlin extension function here, you could also use LivePagedListBuilder
-        val livePagedList =
-                db.dao().charities(categoryId).toLiveData(
-                        pageSize = pageSize,
-                        boundaryCallback = boundaryCallback)
-
-        boundaryCallback.scope = mainScope
-
         return Listing(
-                pagedList = livePagedList,
+                pagedList = db.dao().charities(categoryId).toLiveData(pageSize = pageSize, boundaryCallback = boundaryCallback),
                 networkState = boundaryCallback.networkState,
                 retry = {
                     boundaryCallback.helper.retryAllFailed()

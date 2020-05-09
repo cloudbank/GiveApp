@@ -42,6 +42,7 @@ class CharityViewHolder(view: View, private val glide: GlideRequests
 
     private var charity: Charity? = null
 
+
     fun bind(charity: Charity?) {
         this.charity = charity
         name.text = charity?.charityName
@@ -51,7 +52,7 @@ class CharityViewHolder(view: View, private val glide: GlideRequests
                 .placeholder(android.R.drawable.btn_star)
                 .into(ratings)
 
-        glide.load(R.drawable.ic_pets_24px)
+        glide.load(imageForCause(charity?.cause!!.causeID))
                 .fitCenter()
                 .placeholder(android.R.drawable.btn_star)
                 .into(thumbnail)
@@ -59,6 +60,18 @@ class CharityViewHolder(view: View, private val glide: GlideRequests
         missionStatement.text = charity?.mission
 
 
+    }
+
+    private fun imageForCause(cause: Int): Int {
+        var image = R.drawable.ic_pets_24px
+        when (cause) {
+            2 -> image = (R.drawable.ic_pets_24px)
+            19 -> image = (R.drawable.ic_sign)
+            14 -> image = (R.drawable.ic_healthcare_and_medical_2)
+            28 -> image = (R.drawable.ic_ic_home_black_48dp)
+            1 -> image = (R.drawable.ic_seeding)
+        }
+        return image
     }
 
     companion object {

@@ -26,7 +26,7 @@ android {
     compileSdkVersion build_versions.compile_sdk
     buildToolsVersion build_versions.build_tools
     defaultConfig {
-        applicationId "com.droidteahouse.coronavirustracker"
+        applicationId "com.droidteahouse.give"
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
         multiDexEnabled true
@@ -74,6 +74,7 @@ dependencies {
     implementation deps.lifecycle.runtime
     implementation deps.paging_ktx
     implementation deps.kotlin.stdlib
+    implementation deps.kotlin.reflect
     implementation deps.retrofit.runtime
     implementation deps.retrofit.gson
     implementation deps.retrofit.moshi
