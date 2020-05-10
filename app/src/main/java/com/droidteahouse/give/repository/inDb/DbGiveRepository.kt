@@ -32,8 +32,8 @@ import com.droidteahouse.give.repository.NetworkState
 import com.droidteahouse.give.vo.Charity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlin.coroutines.CoroutineContext
 
 /**
@@ -74,13 +74,16 @@ class DbGiveRepository(
     private suspend fun insertResultIntoDb(body: List<Charity>?) {
         body?.let { it ->
             db.withTransaction {
-
-                val start = db.dao().getNextIndexInCategory(boundaryCallback.cause)
-                val items = it.mapIndexed { index, child ->
-                    child.indexInResponse = start + index
-                    child
+                try {
+                    val start = db.dao().getNextIndexInCategory(boundaryCallback.cause)
+                    val items = it.mapIndexed { index, child ->
+                        child.indexInResponse = start + index
+                        child
+                    }
+                    db.dao().insert(items)
+                } catch (e: Exception) {
+                    Log.e(TAG, e.message)
                 }
-                db.dao().insert(items)
             }
             boundaryCallback.incrementStart()
         }
@@ -102,11 +105,11 @@ class DbGiveRepository(
 
         mainScope.launch {
             try {
-                val api = async(Dispatchers.IO) { GiveApi.safeApiCall(null, networkState) { coronaTrackerApi.charities(categoryID = cateogryId, pageNum = boundaryCallback.page, pageSize = DEFAULT_NETWORK_PAGE_SIZE) } }
-                val response = api.await()
+                val response = GiveApi.safeApiCall(null, networkState) { coronaTrackerApi.charities(categoryID = cateogryId, pageNum = boundaryCallback.page, pageSize = DEFAULT_NETWORK_PAGE_SIZE) }
+
                 if (response != null) {
                     if (response.isSuccessful) {
-                        val update = launch(Dispatchers.IO) { updateResult(response.body()) }
+                        withContext(Dispatchers.IO) { updateResult(response.body()) }
                         networkState.value = (NetworkState.LOADED)
                     } else {
                         networkState.value = (NetworkState.error(response.errorBody().toString()))

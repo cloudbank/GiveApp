@@ -50,6 +50,10 @@
         <item name="android:textColor">?android:attr/textColorPrimary</item>
     </style>
 
+    <style name="Widget.Corona.Button.TextButtonLand" parent="Widget.Corona.Button.TextButton">
+        <item name="android:textSize">12sp</item>
+    </style>
+
     <style name="Widget.Corona.Toolbar" parent="Widget.MaterialComponents.Toolbar">
         <item name="android:background">@color/primary_dark</item>
         <item name="android:theme">@style/Theme.Corona</item>

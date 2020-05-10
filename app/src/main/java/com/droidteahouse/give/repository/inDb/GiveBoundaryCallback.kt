@@ -26,8 +26,8 @@ import com.droidteahouse.give.util.createStatusLiveData
 import com.droidteahouse.give.vo.Charity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import retrofit2.Response
 import java.util.concurrent.Executor
 import kotlin.reflect.KSuspendFunction1
@@ -67,10 +67,10 @@ class GiveBoundaryCallback(
         helper.runIfNotRunning(PagingRequestHelper.RequestType.INITIAL) {
             scope.launch {
                 try {
-                    val api = async(Dispatchers.IO) { GiveApi.safeApiCall(it, networkState) { webservice.charities(categoryID = cause, pageNum = page, pageSize = DEFAULT_NETWORK_PAGE_SIZE) } }
-                    val response = api.await()
+                    val response = GiveApi.safeApiCall(it, networkState) { webservice.charities(categoryID = cause, pageNum = page, pageSize = DEFAULT_NETWORK_PAGE_SIZE) }
+
                     if (response != null) {
-                        if (response.isSuccessful) launch(Dispatchers.IO) { insertItemsIntoDb(response, it) } else it.recordFailure(Throwable(response.errorBody().toString()))
+                        if (response.isSuccessful) withContext(Dispatchers.IO) { insertItemsIntoDb(response, it) } else it.recordFailure(Throwable(response.errorBody().toString()))
                     }
                 } catch (e: Exception) {
                     networkState.value = (NetworkState.error(e.message ?: "unknown err"))
@@ -96,10 +96,10 @@ class GiveBoundaryCallback(
         helper.runIfNotRunning(PagingRequestHelper.RequestType.AFTER) {
             scope.launch {
                 try {
-                    val api = async(Dispatchers.IO) { GiveApi.safeApiCall(it, networkState) { webservice.charities(categoryID = itemAtEnd.cause.causeID, pageNum = page, pageSize = DEFAULT_NETWORK_PAGE_SIZE) } }
-                    val response = api.await()
+                    val response = GiveApi.safeApiCall(it, networkState) { webservice.charities(categoryID = itemAtEnd.cause.causeID, pageNum = page, pageSize = DEFAULT_NETWORK_PAGE_SIZE) }
+
                     if (response != null) {
-                        if (response.isSuccessful) launch(Dispatchers.IO) { insertItemsIntoDb(response, it) } else it.recordFailure(Throwable(response.errorBody().toString()))
+                        if (response.isSuccessful) withContext(Dispatchers.IO) { insertItemsIntoDb(response, it) } else it.recordFailure(Throwable(response.errorBody().toString()))
                     }
                 } catch (e: Exception) {
                     networkState.value = (NetworkState.error(e.message ?: "unknown err"))

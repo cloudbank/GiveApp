@@ -46,4 +46,5 @@ data class Charity(
 ) {
 
     var indexInResponse: Int = -1
+    var isFavorite: Boolean = false
 }

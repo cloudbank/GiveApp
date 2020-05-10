@@ -6,10 +6,13 @@ import android.app.Activity
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.util.DisplayMetrics
+import android.view.GestureDetector
+import android.view.GestureDetector.SimpleOnGestureListener
 import android.view.MotionEvent
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.ImageView
+
 
 /**
  * [android.view.View.OnClickListener] used to translate the sheet downward on
@@ -63,7 +66,23 @@ class BackDropIconClickListener @JvmOverloads constructor(
 
 
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-        onClick(v!!)
+
+        gestureDetector.onTouchEvent(event)
         return true
     }
+
+    val gestureDetector: GestureDetector = GestureDetector(context as Activity, object : SimpleOnGestureListener() {
+        override fun onSingleTapConfirmed(e: MotionEvent): Boolean {
+            onClick(sheet)
+            return true
+        }
+
+        override fun onLongPress(e: MotionEvent) {
+            super.onLongPress(e)
+        }
+
+        override fun onDoubleTap(e: MotionEvent): Boolean {
+            return super.onDoubleTap(e)
+        }
+    })
 }

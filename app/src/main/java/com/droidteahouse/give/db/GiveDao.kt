@@ -35,7 +35,7 @@ interface GiveDao {
     @Query("SELECT * FROM charities WHERE causeID = :category ORDER BY indexInResponse ASC")
     fun charities(category: Int): DataSource.Factory<Int, Charity>
 
-    //called from KSuspendingFunction
+
     @Query("SELECT MAX(indexInResponse) + 1 FROM charities WHERE causeID = :category")
     fun getNextIndexInCategory(category: Int): Int
 
