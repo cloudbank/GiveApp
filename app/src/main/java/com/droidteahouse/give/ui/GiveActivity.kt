@@ -32,7 +32,7 @@ import kotlinx.android.synthetic.main.main_layout.*
 
 
 /**
- * A list activity that shows areas affected by corona virus
+ * A list activity that shows charities
  *
  */
 class GiveActivity : AppCompatActivity() {
@@ -56,7 +56,7 @@ class GiveActivity : AppCompatActivity() {
         product_grid.setOnTouchListener(backdropListener)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            product_grid.background = getDrawable(R.drawable.shr_product_grid_background_shape)
+            // product_grid.background = getDrawable(R.drawable.shr_product_grid_background_shape)
         }
     }
 

@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/charityFragment"
         android:name="com.droidteahouse.give.ui.CharityFragment"
-        android:label="CoronaTrackerFragment"
+        android:label="CharityFragment"
         tools:layout="@layout/fragment_charity" />
 
 

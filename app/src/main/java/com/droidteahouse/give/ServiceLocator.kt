@@ -100,7 +100,7 @@ open class DefaultServiceLocator(val app: Application) : ServiceLocator {
     override fun getRepository(): GiveRepository {
         return DbGiveRepository(
                 db = db,
-                coronaTrackerApi = getGiveApi(),
+                giveApi = getGiveApi(),
                 boundaryCallback = boundaryCallback)
     }
 

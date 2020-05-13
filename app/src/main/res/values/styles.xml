@@ -17,7 +17,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="Theme.Corona" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.Give" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primary_dark</item>
@@ -31,14 +31,15 @@
         <!-- Customize your theme here. -->
         <item name="windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearanceOverlay</item>
     </style>
 
 
-    <style name="Widget.Corona.Backdrop" parent="">
+    <style name="Widget.Give.Backdrop" parent="">
         <item name="android:background">@color/primary_dark</item>
     </style>
 
-    <style name="Widget.Corona.Button" parent="Widget.MaterialComponents.Button">
+    <style name="Widget.Give.Button" parent="Widget.MaterialComponents.Button">
         <item name="android:textColor">@color/primary_text</item>
         <item name="backgroundTint">@color/primary_dark</item>
         <item name="android:stateListAnimator" tools:ignore="NewApi">
@@ -46,22 +47,22 @@
         </item>
     </style>
 
-    <style name="Widget.Corona.Button.TextButton" parent="Widget.MaterialComponents.Button.TextButton">
+    <style name="Widget.Give.Button.TextButton" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:textColor">?android:attr/textColorPrimary</item>
     </style>
 
-    <style name="Widget.Corona.Button.TextButtonLand" parent="Widget.Corona.Button.TextButton">
+    <style name="Widget.Give.Button.TextButtonLand" parent="Widget.Give.Button.TextButton">
         <item name="android:textSize">12sp</item>
     </style>
 
-    <style name="Widget.Corona.Toolbar" parent="Widget.MaterialComponents.Toolbar">
+    <style name="Widget.Give.Toolbar" parent="Widget.MaterialComponents.Toolbar">
         <item name="android:background">@color/primary_dark</item>
-        <item name="android:theme">@style/Theme.Corona</item>
+        <item name="android:theme">@style/Theme.Give</item>
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
-        <item name="titleTextAppearance">@style/TextAppearance.Corona.Toolbar</item>
+        <item name="titleTextAppearance">@style/TextAppearance.Give.Toolbar</item>
     </style>
 
-    <style name="TextAppearance.Corona.Toolbar" parent="TextAppearance.MaterialComponents.Button">
+    <style name="TextAppearance.Give.Toolbar" parent="TextAppearance.MaterialComponents.Button">
         <item name="android:textSize">16sp</item>
     </style>
 
@@ -73,7 +74,11 @@
     <style name="Divider.Horizontal" parent="Divider">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>
-        //
+    </style>
 
+    <style name="ShapeAppearanceOverlay.Backdrop" parent="">
+        <item name="cornerSize">0dp</item>
+        <item name="cornerFamilyTopLeft">cut</item>
+        <item name="cornerSizeTopLeft">16dp</item>
     </style>
 </resources>

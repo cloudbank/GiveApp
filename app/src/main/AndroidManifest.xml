@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Corona">
+        android:theme="@style/Theme.Give">
 
         <activity android:name="com.droidteahouse.give.ui.GiveActivity">
             <intent-filter>

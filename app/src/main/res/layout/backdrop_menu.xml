@@ -3,7 +3,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/animal"
-        style="@style/Widget.Corona.Button.TextButton"
+        style="@style/Widget.Give.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="updateData"
@@ -11,7 +11,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/internationalPeace"
-        style="@style/Widget.Corona.Button.TextButton"
+        style="@style/Widget.Give.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="updateData"
@@ -19,7 +19,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/homeless"
-        style="@style/Widget.Corona.Button.TextButton"
+        style="@style/Widget.Give.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="updateData"
@@ -27,7 +27,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/medicalResearch"
-        style="@style/Widget.Corona.Button.TextButton"
+        style="@style/Widget.Give.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="updateData"
@@ -35,7 +35,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/wildlife"
-        style="@style/Widget.Corona.Button.TextButton"
+        style="@style/Widget.Give.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="updateData"

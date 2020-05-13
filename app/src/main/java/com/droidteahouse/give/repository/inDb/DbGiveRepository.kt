@@ -42,7 +42,7 @@ import kotlin.coroutines.CoroutineContext
  */
 class DbGiveRepository(
         val db: GiveDb,
-        private val coronaTrackerApi: GiveApi,
+        private val giveApi: GiveApi,
         private var boundaryCallback: GiveBoundaryCallback
 ) : GiveRepository {
 
@@ -105,7 +105,7 @@ class DbGiveRepository(
 
         mainScope.launch {
             try {
-                val response = GiveApi.safeApiCall(null, networkState) { coronaTrackerApi.charities(categoryID = cateogryId, pageNum = boundaryCallback.page, pageSize = DEFAULT_NETWORK_PAGE_SIZE) }
+                val response = GiveApi.safeApiCall(null, networkState) { giveApi.charities(categoryID = cateogryId, pageNum = boundaryCallback.page, pageSize = DEFAULT_NETWORK_PAGE_SIZE) }
 
                 if (response != null) {
                     if (response.isSuccessful) {

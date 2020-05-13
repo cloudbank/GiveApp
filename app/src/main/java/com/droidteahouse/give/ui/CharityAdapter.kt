@@ -27,7 +27,7 @@ import com.droidteahouse.give.vo.Charity
 
 
 /**
- * A simple adapter implementation for the corona virus Charity
+ * A paged list adapter implementation for a charity
  */
 class CharityAdapter(
         private val glide: GlideRequests,

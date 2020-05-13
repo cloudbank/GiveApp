@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        style="@style/Widget.Corona.Backdrop"
+        style="@style/Widget.Give.Backdrop"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
@@ -28,7 +28,7 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/app_bar"
-            style="@style/Widget.Corona.Toolbar"
+            style="@style/Widget.Give.Toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:paddingStart="12dp"
