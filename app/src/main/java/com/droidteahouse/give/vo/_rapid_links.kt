@@ -1,7 +1,9 @@
 package com.droidteahouse.give.vo
 
+import android.os.Parcelable
 import androidx.room.Embedded
 import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 
 /*
 Copyright (c) 2020 Kotlin Data Classes Generated from JSON powered by http://www.json2kotlin.com
@@ -14,13 +16,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
-
+@Parcelize
 data class _rapid_links_org(
         @Embedded
         @field:Json(name = "related") val related_rl: RelatedOrg
-)
+) : Parcelable
 
+@Parcelize
 data class _rapid_links_active(
         @Embedded
         @field:Json(name = "related") val related_active: RelatedActive
-)
+) : Parcelable

@@ -1,10 +1,13 @@
 package com.droidteahouse.give.vo
 
+import android.os.Parcel
+import android.os.Parcelable
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 
 /*
 Copyright (c) 2020 Kotlin Data Classes Generated from JSON powered by http://www.json2kotlin.com
@@ -19,7 +22,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 
 @Entity(tableName = "charities",
         indices = [Index(value = ["ein"], unique = false)])
-
+@Parcelize
 data class Charity(
         @field:Json(name = "charityNavigatorURL") val charityNavigatorURL: String,
         @field:Json(name = "mission") val mission: String,
@@ -43,8 +46,10 @@ data class Charity(
         @field:Json(name = "advisories") val advisories: Advisories?,
         @Embedded
         @field:Json(name = "organization") val organization: Organization?
-) {
+) : Parcelable {
 
     var indexInResponse: Int = -1
     var isFavorite: Boolean = false
+
+
 }

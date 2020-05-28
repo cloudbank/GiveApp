@@ -1,7 +1,9 @@
 package com.droidteahouse.give.vo
 
+import android.os.Parcelable
 import androidx.room.Embedded
 import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 
 /*
 Copyright (c) 2020 Kotlin Data Classes Generated from JSON powered by http://www.json2kotlin.com
@@ -14,7 +16,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
-
+@Parcelize
 data class Organization(
 
         @field:Json(name = "charityName") val charityName2: String?,
@@ -22,4 +24,4 @@ data class Organization(
         @field:Json(name = "charityNavigatorURL") val charityNavigatorURL4: String?,
         @Embedded
         @field:Json(name = "_rapid_links") val _rapid_links_org: _rapid_links_org?
-)
+) : Parcelable

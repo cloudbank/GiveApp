@@ -9,13 +9,34 @@
         android:id="@+id/charityFragment"
         android:name="com.droidteahouse.give.ui.CharityFragment"
         android:label="CharityFragment"
-        tools:layout="@layout/fragment_charity" />
+        tools:layout="@layout/fragment_charity">
+        <action
+            android:id="@+id/masterDetail"
+            app:destination="@id/detailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
 
 
     <fragment
-        android:id="@+id/newsFragment"
-        android:name="com.droidteahouse.give.ui.NewsFragment"
-        android:label="NewsFragment"
-        tools:layout="@layout/fragment_charity" />
+        android:id="@+id/detailFragment"
+        android:name="com.droidteahouse.give.ui.DetailFragment"
+        android:label="DetailFragment"
+        tools:layout="@layout/charity_detail">
+        <argument
+            android:name="website"
+            app:argType="string" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="uri"
+            app:argType="integer" />
+        <argument
+            android:name="missionStatement"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

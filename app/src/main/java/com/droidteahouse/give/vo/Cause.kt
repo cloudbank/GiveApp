@@ -1,7 +1,9 @@
 package com.droidteahouse.give.vo
 
+import android.os.Parcelable
 import androidx.annotation.Nullable
 import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 
 /*
 Copyright (c) 2020 Kotlin Data Classes Generated from JSON powered by http://www.json2kotlin.com
@@ -14,7 +16,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
-
+@Parcelize
 data class Cause(
 
         @field:Json(name = "causeID") val causeID: Int,
@@ -22,4 +24,4 @@ data class Cause(
         @Nullable
         @field:Json(name = "charityNavigatorURL") val charityNavigatorURL3: String?,
         @field:Json(name = "image") val image2: String?
-)
+) : Parcelable

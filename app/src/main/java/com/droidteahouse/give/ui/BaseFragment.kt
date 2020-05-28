@@ -5,6 +5,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.MutableLiveData
@@ -19,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_charity.*
 open class BaseFragment : Fragment() {
     var network: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
     lateinit var glide: GlideRequests
-
+    lateinit var pg: View
 
     val model: CharityViewModel by activityViewModels { (ServiceLocator.instance(activity!!)).provideViewModel(activity!!.application, this) }
 
@@ -28,10 +29,10 @@ open class BaseFragment : Fragment() {
         glide = GlideApp.with(context!!)
 
 
+
     }
 
-
-    //@todo this will not work with a VPN connection like reverse tethering to detect if the relay server is cut
+    //@todo refactor to network callback
     fun checkNetwork(): Boolean {
         var result = false
         val cm = activity!!.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

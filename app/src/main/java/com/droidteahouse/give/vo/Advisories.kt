@@ -1,7 +1,9 @@
 package com.droidteahouse.give.vo
 
+import android.os.Parcelable
 import androidx.room.Embedded
 import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 
 /*
 Copyright (c) 2020 Kotlin Data Classes Generated from JSON powered by http://www.json2kotlin.com
@@ -14,10 +16,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
-
+@Parcelize
 data class Advisories(
 
         @field:Json(name = "severity") val severity: String?,
         @Embedded
         @field:Json(name = "active") val active_adv: Active
-)
+) : Parcelable

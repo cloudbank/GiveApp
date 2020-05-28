@@ -17,14 +17,11 @@
 package com.droidteahouse.give.ui
 
 
-import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
-import com.droidteahouse.backdrop.BackDropIconClickListener
 import com.droidteahouse.give.R
 import com.droidteahouse.give.ServiceLocator
 import kotlinx.android.synthetic.main.fragment_charity.*
@@ -39,32 +36,19 @@ class GiveActivity : AppCompatActivity() {
 
     val model: CharityViewModel by viewModels { (ServiceLocator.instance(this)).provideViewModel(application, this) }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_layout)
-        initMenu()
-    }
-
-    private fun initMenu() {
         setSupportActionBar(app_bar)
-        val backdropListener = BackDropIconClickListener(
-                this,
-                product_grid,
-                ContextCompat.getDrawable(this, R.drawable.shr_branded_menu), // Menu open icon
-                ContextCompat.getDrawable(this, R.drawable.shr_close_menu))
-        app_bar.setNavigationOnClickListener(backdropListener) // Menu close icon
-        product_grid.setOnTouchListener(backdropListener)
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            // product_grid.background = getDrawable(R.drawable.shr_product_grid_background_shape)
-        }
     }
 
     fun updateData(v: View) {
         val nc = myNavHostFragment.findNavController()
 
         nc.navigate(R.id.charityFragment)
-        var id = 1
+        var id = 2
         when (v.id) {
             R.id.animal -> id = 2
             R.id.medicalResearch -> id = 14
@@ -81,5 +65,6 @@ class GiveActivity : AppCompatActivity() {
             (list.adapter as? CharityAdapter)?.submitList(null)
         }
     }
+
 
 }

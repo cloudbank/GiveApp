@@ -1,7 +1,9 @@
 package com.droidteahouse.give.vo
 
+import android.os.Parcelable
 import androidx.annotation.Nullable
 import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 
 /*
 Copyright (c) 2020 Kotlin Data Classes Generated from JSON powered by http://www.json2kotlin.com
@@ -14,7 +16,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
-
+@Parcelize
 data class MailingAddress(
         @Nullable
         @field:Json(name = "country") val country_mailingaddress: String?,
@@ -23,4 +25,4 @@ data class MailingAddress(
         @field:Json(name = "postalCode") val postalCode_mailingaddress: Int?,
         @field:Json(name = "streetAddress1") val streetAddress1_mailingaddress: String?,
         @field:Json(name = "streetAddress2") val streetAddress2_mailingaddress: String?
-)
+) : Parcelable

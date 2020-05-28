@@ -41,13 +41,13 @@
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/product_grid"
+        style="@style/ShapeAppearanceOverlay.Backdrop"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="56dp"
         android:padding="5dp"
         android:background="@color/white"
         android:elevation="8dp"
-
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 

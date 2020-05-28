@@ -1,6 +1,8 @@
 package com.droidteahouse.give.vo
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 
 /*
 Copyright (c) 2020 Kotlin Data Classes Generated from JSON powered by http://www.json2kotlin.com
@@ -13,7 +15,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND?, EXPRESS OR IMPL
 
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
-
+@Parcelize
 data class DonationAddress(
 
         @field:Json(name = "country") val country_donationaddress: String?,
@@ -22,4 +24,4 @@ data class DonationAddress(
         @field:Json(name = "postalCode") val postalCode_donationaddress: Int?,
         @field:Json(name = "streetAddress1") val streetAddress1_donationaddress: String?,
         @field:Json(name = "streetAddress2") val streetAddress2_donationaddress: String?
-)
+) : Parcelable
